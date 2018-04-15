@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  testeredis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - databases-sp
+
+  testemongo:
+    image: mongo
+    ports:
+      - "17017:27017"
+    networks:
+      - databases-sp
+
+  testesqlserver2017:
+    image: microsoft/mssql-server-linux:2017-latest
+    ports:
+      - "11433:1433"
+    networks:
+      - databases-sp
+      
+networks: 
+    databases-sp:
+        driver: bridge
